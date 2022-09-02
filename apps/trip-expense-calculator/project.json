@@ -1,0 +1,96 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/trip-expense-calculator/src",
+  "prefix": "trip-expense-calculator",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/trip-expense-calculator",
+        "index": "apps/trip-expense-calculator/src/index.html",
+        "main": "apps/trip-expense-calculator/src/main.ts",
+        "polyfills": "apps/trip-expense-calculator/src/polyfills.ts",
+        "tsConfig": "apps/trip-expense-calculator/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/trip-expense-calculator/src/favicon.ico",
+          "apps/trip-expense-calculator/src/assets"
+        ],
+        "styles": ["apps/trip-expense-calculator/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/trip-expense-calculator/src/environments/environment.ts",
+              "with": "apps/trip-expense-calculator/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "trip-expense-calculator:build:production"
+        },
+        "development": {
+          "browserTarget": "trip-expense-calculator:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/trip-expense-calculator/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "trip-expense-calculator:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/trip-expense-calculator/**/*.ts",
+          "apps/trip-expense-calculator/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/trip-expense-calculator"],
+      "options": {
+        "jestConfig": "apps/trip-expense-calculator/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
