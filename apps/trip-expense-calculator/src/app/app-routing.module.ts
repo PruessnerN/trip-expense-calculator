@@ -7,8 +7,12 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: '/trip',
+  },
+  {
+    path: 'trip',
     component: AppComponent,
-    children: [],
   },
   {
     path: '404',

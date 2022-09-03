@@ -1,4 +1,5 @@
 @use 'colors' as colors;
+@import './components/buttons';
 
 body.dark {
   --primary: #{colors.$blue};
