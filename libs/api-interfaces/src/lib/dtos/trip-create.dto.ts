@@ -1,9 +1,9 @@
 export class CreateTripDto {
   name: string;
 
-  description: string;
+  description: string | null;
 
-  slug: string;
+  slug?: string;
 
   startDate: Date;
 

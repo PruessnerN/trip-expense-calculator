@@ -16,12 +16,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trip-expense-calculator/api-interfaces": [
-        "libs/api-interfaces/src/index.ts"
+      "@trip-expense-calculator/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@trip-expense-calculator/backend/tec-api": ["libs/backend/tec-api/src/index.ts"],
+      "@trip-expense-calculator/frontend/data-access-trip": [
+        "libs/frontend/data-access-trip/src/index.ts"
       ],
-      "@trip-expense-calculator/backend/tec-api": [
-        "libs/backend/tec-api/src/index.ts"
-      ],
+      "@trip-expense-calculator/frontend/feature-trip": ["libs/frontend/feature-trip/src/index.ts"],
       "@trip-expense-calculator/frontend/feature-wrapper": [
         "libs/frontend/feature-wrapper/src/index.ts"
       ]

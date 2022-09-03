@@ -1,0 +1,25 @@
+@use '../colors' as colors;
+
+.tec-input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 2px;
+  padding: 0.5rem 0.8rem;
+  background: var(--foreground);
+  border-bottom: 2px solid var(--primary);
+  color: var(--font-primary);
+  font-size: 1.1rem;
+  line-height: 2rem;
+  vertical-align: middle;
+  &::-webkit-input-placeholder {
+    color: var(--font-secondary);
+  }
+}
+
+.tec-input.ng-invalid.ng-touched {
+  border-bottom: 2px solid var(--error);
+}

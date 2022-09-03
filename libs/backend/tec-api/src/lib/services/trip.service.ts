@@ -1,3 +1,4 @@
+import { NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { CreateTripDto, UpdateTripDto } from '@trip-expense-calculator/api-interfaces';
@@ -8,23 +9,29 @@ import { Trip } from '../entities/trip.entity';
 export class TripService {
   constructor(@InjectRepository(Trip) private repository: Repository<Trip>) {}
 
-  create(createTripDto: CreateTripDto) {
-    return this.repository.create(createTripDto);
+  async create(createTripDto: CreateTripDto): Promise<Trip> {
+    return await this.repository.create(createTripDto);
   }
 
-  findAll() {
-    return this.repository.find();
+  async findAll(): Promise<Trip[]> {
+    return await this.repository.find();
   }
 
-  findOne(id: string) {
-    return this.repository.findOne({ where: { id } });
+  async findOne(id: string): Promise<Trip> {
+    const result = await this.repository.findOne({ where: { id } });
+
+    if (!result) throw new NotFoundException();
+
+    return result;
   }
 
-  update(id: string, updateTripDto: UpdateTripDto) {
-    return this.repository.update(id, updateTripDto);
+  async update(updateTripDto: UpdateTripDto): Promise<Trip> {
+    return await this.repository.save(updateTripDto);
   }
 
-  remove(id: string) {
-    return this.repository.softDelete(id);
+  async remove(id: string): Promise<boolean> {
+    const result = await this.repository.softDelete(id);
+
+    return result.affected === 1;
   }
 }

@@ -18,8 +18,8 @@ export class Trip {
   @Column()
   name: string;
 
-  @Column()
-  description: string;
+  @Column({ nullable: true })
+  description: string | null;
 
   @Column()
   slug: string;

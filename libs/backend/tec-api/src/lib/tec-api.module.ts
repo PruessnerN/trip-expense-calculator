@@ -17,4 +17,4 @@ import { UserService } from './services/user.service';
   providers: [TripService, ExpenseService, UserService],
   exports: [],
 })
-export class TecModule {}
+export class TecApiModule {}

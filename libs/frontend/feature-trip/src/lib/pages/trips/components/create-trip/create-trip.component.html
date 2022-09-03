@@ -1,0 +1,45 @@
+<div class="create-trip-container">
+  <h1>Plan a new group trip</h1>
+  <form
+    [formGroup]="createTripForm"
+    (ngSubmit)="onCreateTrip()"
+    fxLayout="column"
+    fxLayoutGap="25px"
+  >
+    <input
+      id="trip-name-input"
+      class="tec-input"
+      placeholder="Trip name or destination"
+      type="text"
+      formControlName="name"
+      autocomplete="off"
+    />
+    <input
+      id="trip-description-input"
+      class="tec-input"
+      placeholder="Description (optional)"
+      type="text"
+      formControlName="description"
+      autocomplete="off"
+    />
+    <input
+      id="trip-start-input"
+      class="tec-input"
+      placeholder="Start date (e.g. 6/10/2022)"
+      type="text"
+      formControlName="startDate"
+      autocomplete="off"
+    />
+
+    <input
+      id="trip-end-input"
+      class="tec-input"
+      placeholder="End date (e.g. 6/30/2022)"
+      type="text"
+      formControlName="endDate"
+      autocomplete="off"
+    />
+
+    <button class="tec-button tec-button-primary" type="submit">Create trip</button>
+  </form>
+</div>

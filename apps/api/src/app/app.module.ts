@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Expense, TecModule, Trip, User } from '@trip-expense-calculator/backend/tec-api';
+import { Expense, TecApiModule, Trip, User } from '@trip-expense-calculator/backend/tec-api';
 
 import { AppController } from './app.controller';
 
@@ -14,7 +14,7 @@ import { AppController } from './app.controller';
       entities: [Trip, User, Expense],
       synchronize: true,
     }),
-    TecModule,
+    TecApiModule,
   ],
   controllers: [AppController],
   providers: [],

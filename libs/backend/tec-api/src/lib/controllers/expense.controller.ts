@@ -1,35 +1,48 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 
 import { CreateExpenseDto, UpdateExpenseDto } from '@trip-expense-calculator/api-interfaces';
 
 import { ExpenseService } from '../services/expense.service';
 
-@Controller('expense')
+@Controller('expenses')
 export class ExpenseController {
   constructor(private readonly expenseService: ExpenseService) {}
 
   @Post()
-  create(@Body() createExpenseDto: CreateExpenseDto) {
-    return this.expenseService.create(createExpenseDto);
+  async create(@Body() createExpenseDto: CreateExpenseDto) {
+    return await this.expenseService.create(createExpenseDto);
   }
 
   @Get()
-  findAll() {
-    return this.expenseService.findAll();
+  async findAll() {
+    return await this.expenseService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.expenseService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    return await this.expenseService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateExpenseDto: UpdateExpenseDto) {
-    return this.expenseService.update(id, updateExpenseDto);
+  async update(@Param('id') id: string, @Body() updateExpenseDto: UpdateExpenseDto) {
+    const found = await this.expenseService.findOne(id);
+
+    if (!found) throw new NotFoundException();
+
+    return await this.expenseService.update(updateExpenseDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.expenseService.remove(id);
+  async remove(@Param('id') id: string) {
+    return await this.expenseService.remove(id);
   }
 }

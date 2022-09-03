@@ -5,6 +5,8 @@
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
     "backend-tec-api": "libs/backend/tec-api",
+    "frontend-data-access-trip": "libs/frontend/data-access-trip",
+    "frontend-feature-trip": "libs/frontend/feature-trip",
     "frontend-feature-wrapper": "libs/frontend/feature-wrapper",
     "trip-expense-calculator": "apps/trip-expense-calculator",
     "trip-expense-calculator-e2e": "apps/trip-expense-calculator-e2e"
