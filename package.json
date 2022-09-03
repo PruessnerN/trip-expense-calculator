@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-    "start": "nx serve",
+    "start": "nx run-many --parallel --target=serve --projects=trip-expense-calculator,api",
     "build": "nx build",
     "format": "prettier --write \"{libs,apps}/**/*.ts\"",
     "test": "nx test"
