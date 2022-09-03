@@ -1,0 +1,16 @@
+:host {
+  .trip-selection-container {
+    background-color: purple;
+    padding: 1em;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    .trip-selection-dates {
+      color: var(--font-secondary);
+    }
+  }
+  .trip-selection-container:not(:disabled):not(.disabled):active {
+    background-color: var(--secondary);
+  }
+}

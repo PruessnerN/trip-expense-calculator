@@ -1,6 +1,10 @@
 <div class="trips-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
   <tec-create-trip></tec-create-trip>
-  <div *ngIf="!!trips?.length">
+  <ng-container *ngIf="!!trips?.length">
     <hr fxFlexFill />
-  </div>
+    <h1>Select an existing trip</h1>
+    <div class="trip-selection">
+      <tec-trip-selection *ngFor="let trip of trips" [trip]="trip"></tec-trip-selection>
+    </div>
+  </ng-container>
 </div>

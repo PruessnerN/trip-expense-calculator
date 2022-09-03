@@ -1,0 +1,14 @@
+<div
+  id="trip-{{ trip.id }}"
+  class="trip-selection-container"
+  fxLayout="row"
+  fxLayoutAlign="space-between"
+>
+  <div>{{ trip.name.length > 50 ? (trip.name | slice: 0:50) + '...' : trip.name }}</div>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <div class="trip-selection-dates">
+      {{ trip.startDate | date: 'shortDate' }} - {{ trip.endDate | date: 'shortDate' }}
+    </div>
+    <span>>></span>
+  </div>
+</div>
