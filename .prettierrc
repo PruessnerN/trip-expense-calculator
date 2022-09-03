@@ -1,3 +1,19 @@
 {
-  "singleQuote": true
+  "trailingComma": "all",
+  "singleQuote": true,
+  "semi": true,
+  "printWidth": 100,
+  "endOfLine": "lf",
+  "importOrder": [
+    "^@nestjs/(.*)$",
+    "^@generation-esports/(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderParserPlugins": [
+    "typescript",
+    "decorators-legacy"
+  ]
 }

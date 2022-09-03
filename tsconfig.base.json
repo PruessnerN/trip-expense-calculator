@@ -10,6 +10,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
+    "strictPropertyInitialization": false,
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
@@ -17,6 +18,12 @@
     "paths": {
       "@trip-expense-calculator/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
+      ],
+      "@trip-expense-calculator/backend/tec-api": [
+        "libs/backend/tec-api/src/index.ts"
+      ],
+      "@trip-expense-calculator/frontend/feature-wrapper": [
+        "libs/frontend/feature-wrapper/src/index.ts"
       ]
     }
   },

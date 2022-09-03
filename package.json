@@ -7,6 +7,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
+    "format": "prettier --write \"{libs,apps}/**/*.ts\"",
     "test": "nx test"
   },
   "private": true,
@@ -22,10 +23,12 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/typeorm": "^9.0.1",
     "@nrwl/angular": "14.6.3",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "~7.5.0",
+    "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
+    "typeorm": "^0.3.9",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -49,7 +52,9 @@
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "~5.33.1",
+    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@typescript-eslint/parser": "~5.33.1",
+    "better-sqlite3": "^7.6.2",
     "cypress": "^10.2.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
