@@ -23,8 +23,8 @@ export class TripService {
     return await this.repository.find();
   }
 
-  async findOne(id: string): Promise<Trip> {
-    const result = await this.repository.findOne({ where: { id } });
+  async findOne(slug: string): Promise<Trip> {
+    const result = await this.repository.findOne({ where: { slug } });
 
     if (!result) throw new NotFoundException();
 

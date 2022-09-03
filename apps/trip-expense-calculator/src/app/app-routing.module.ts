@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TripsComponent } from '@trip-expense-calculator/frontend/feature-trip';
+import { TripComponent, TripsComponent } from '@trip-expense-calculator/frontend/feature-trip';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -9,12 +9,15 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/trip',
+    redirectTo: '/trips',
   },
   {
-    path: 'trip',
+    path: 'trips',
     component: AppComponent,
-    children: [{ path: '', component: TripsComponent }],
+    children: [
+      { path: '', component: TripsComponent },
+      { path: ':slug', component: TripComponent },
+    ],
   },
   {
     path: '404',

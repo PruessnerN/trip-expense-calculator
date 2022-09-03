@@ -3,6 +3,7 @@
   class="trip-selection-container"
   fxLayout="row"
   fxLayoutAlign="space-between"
+  routerLink="/trips/{{ trip.slug }}"
 >
   <div>{{ trip.name.length > 50 ? (trip.name | slice: 0:50) + '...' : trip.name }}</div>
   <div fxLayout="row" fxLayoutGap="20px">

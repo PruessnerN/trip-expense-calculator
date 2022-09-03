@@ -27,9 +27,9 @@ export class TripController {
     return await this.tripService.findAll();
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return await this.tripService.findOne(id);
+  @Get(':slug')
+  async findOne(@Param('slug') slug: string) {
+    return await this.tripService.findOne(slug);
   }
 
   @Patch(':id')

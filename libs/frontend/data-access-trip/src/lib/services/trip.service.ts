@@ -11,6 +11,10 @@ export class TripService {
     return this.http.get<TripDto[]>(`/api/trips`);
   }
 
+  getTrip(slug: string): Observable<TripDto> {
+    return this.http.get<TripDto>(`/api/trips/${slug}`);
+  }
+
   createTrip(trip: CreateTripDto): Observable<TripDto> {
     return this.http.post<TripDto>(`/api/trips`, trip);
   }
