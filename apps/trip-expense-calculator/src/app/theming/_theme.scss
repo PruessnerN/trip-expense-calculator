@@ -1,0 +1,15 @@
+@use 'colors' as colors;
+
+body.dark {
+  --primary: #{colors.$blue};
+  --secondary: #{colors.$purple};
+  --warn: #{colors.$yellow};
+  --error: #{colors.$red};
+  --font-primary: #{colors.$white};
+  --font-secondary: #{colors.$lessWhite};
+  --background: #{colors.$dark};
+  --foreground: #{colors.$grey};
+
+  color: var(--font-primary);
+  background-color: var(--background);
+}
