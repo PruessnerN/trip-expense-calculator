@@ -10,7 +10,7 @@ import { TripService } from '@trip-expense-calculator/frontend/data-access-trip'
 export class SettleUpComponent {
   @Input() trip?: TripDto;
 
-  debts: { member: UserDto; amount: number; payTo: UserDto }[] = [];
+  debts?: { member: UserDto; amount: number; payTo: UserDto }[];
 
   constructor(private tripService: TripService) {}
 

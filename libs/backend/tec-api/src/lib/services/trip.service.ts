@@ -73,7 +73,7 @@ export class TripService {
       }
     }
 
-    return debts;
+    return debts.map((debt) => debt.amount).reduce((prev, next) => prev + next) !== 0 ? debts : [];
   }
 
   async create(createTripDto: CreateTripDto): Promise<Trip> {

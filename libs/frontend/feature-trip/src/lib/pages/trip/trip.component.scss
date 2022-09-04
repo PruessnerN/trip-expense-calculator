@@ -1,7 +1,12 @@
 :host {
+  #back-button {
+    margin-top: 20px;
+    float: left;
+  }
   .trip-container {
     margin: 20px;
     margin-top: 100px;
+
     .member-expense-container {
       .member-container,
       .expense-container,
