@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreateTripDto } from '@trip-expense-calculator/api-interfaces';
 import { TripService } from '@trip-expense-calculator/frontend/data-access-trip';
 
@@ -26,14 +27,12 @@ export class CreateTripComponent {
     ]),
   });
 
-  constructor(private tripService: TripService) {}
+  constructor(private tripService: TripService, private router: Router) {}
 
   onCreateTrip(): void {
-    if (
-      this.createTripForm.valid &&
-      this.createTripForm.value.name?.trim() !== '' &&
-      this.createTripForm.value.description?.trim() !== ''
-    ) {
+    this.createTripForm.markAllAsTouched();
+
+    if (this.createTripForm.valid && this.createTripForm.value.name?.trim() !== '') {
       const trip: CreateTripDto = {
         name: this.createTripForm.value.name ?? '',
         description: this.createTripForm.value.description ?? '',
@@ -41,7 +40,9 @@ export class CreateTripComponent {
         endDate: new Date(this.createTripForm.value.endDate ?? '2/23/2022'),
       };
 
-      this.tripService.createTrip(trip).subscribe();
+      this.tripService
+        .createTrip(trip)
+        .subscribe((trip) => this.router.navigateByUrl(`trips/${trip.slug}`));
     }
   }
 }

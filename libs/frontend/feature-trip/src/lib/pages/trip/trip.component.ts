@@ -18,7 +18,7 @@ export class TripComponent {
   trip?: TripDto;
 
   expenseForm = new FormGroup({
-    member: new FormControl('0', [Validators.required]),
+    member: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     value: new FormControl('', [
       Validators.required,
@@ -57,6 +57,8 @@ export class TripComponent {
   }
 
   onSaveExpenseClick(): void {
+    this.expenseForm.markAllAsTouched();
+
     if (
       this.expenseForm.valid &&
       this.expenseForm.value.name?.trim() !== '' &&
@@ -73,13 +75,15 @@ export class TripComponent {
         })
         .subscribe((expense) => {
           this.closeModal('expense-modal');
-          this.expenseForm.reset({ member: '0' });
+          this.expenseForm.reset({ member: '' });
           this.trip?.expenses?.push(expense);
         });
     }
   }
 
   onSaveMemberClick(): void {
+    this.memberForm.markAllAsTouched();
+
     if (this.memberForm.valid && this.memberForm.value.name?.trim() !== '' && !!this.trip) {
       this.userService
         .createUser({
@@ -95,8 +99,21 @@ export class TripComponent {
   }
 
   closeModal(id: string) {
-    this.expenseForm.reset({ member: '0' });
+    this.expenseForm.reset({ member: '' });
     this.memberForm.reset();
     this.modalService.close(id);
+  }
+
+  getUsersName(id: string): string {
+    const member = this.trip?.members?.find((member) => member.id === id);
+    return member ? member.name : 'unknown';
+  }
+
+  getExpenseTotal(): number {
+    return this.trip && this.trip.expenses && this.trip.expenses.length
+      ? this.trip?.expenses
+          ?.map((expense) => expense.value)
+          ?.reduce((previous, next) => previous + next)
+      : 0;
   }
 }

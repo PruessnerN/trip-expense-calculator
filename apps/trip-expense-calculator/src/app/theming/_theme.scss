@@ -3,6 +3,7 @@
 @import './components/buttons';
 @import './components/inputs';
 @import './components/hr';
+@import './components/table';
 
 body.dark {
   --primary: #{colors.$blue};

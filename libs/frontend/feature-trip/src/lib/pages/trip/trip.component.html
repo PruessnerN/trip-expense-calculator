@@ -1,10 +1,18 @@
-<div *ngIf="trip$ | async" class="trip-container" fxLayout="column" fxLayoutAlign="center center">
-  <h1>{{ trip?.name }}</h1>
-  <h2>
-    <span class="subtext">from</span> {{ trip?.startDate | date: 'longDate' }}
-    <span class="subtext">to</span>
-    {{ trip?.endDate | date: 'longDate' }}
-  </h2>
+<div
+  *ngIf="trip$ | async"
+  class="trip-container"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="50px"
+>
+  <div class="header-container" fxLayout="column" fxLayoutAlign="center center">
+    <h1>{{ trip?.name }}</h1>
+    <h2 fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="10px">
+      <div><span class="subtext">from</span> {{ trip?.startDate | date: 'longDate' }}</div>
+      <div><span class="subtext">to</span> {{ trip?.endDate | date: 'longDate' }}</div>
+    </h2>
+    <h4>{{ trip?.description }}</h4>
+  </div>
   <div
     class="member-expense-container"
     fxLayout="row"
@@ -13,23 +21,45 @@
     fxLayoutAlign="space-around"
     fxLayoutGap="50px"
   >
-    <div class="member-container" fxLayout="column" fxFlexFill>
-      <div fxLayout="row" fxLayoutAlign="space-between">
-        <h2>Members</h2>
-        <button class="tec-button tec-button-primary" (click)="onAddMemberClick()">
-          Add Member
-        </button>
+    <div class="member-container" fxLayout="column" fxLayoutGap="30px">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 class="vertical-center">Members</h2>
+        <button class="tec-button tec-button-primary" (click)="onAddMemberClick()">Add</button>
       </div>
-      <h3 *ngFor="let member of trip?.members">{{ member.name }}</h3>
+      <div>
+        <h3 *ngFor="let member of trip?.members">{{ member.name }}</h3>
+      </div>
     </div>
-    <div class="expense-container" fxLayout="column" fxFlexFill>
-      <div fxLayout="row" fxLayoutAlign="space-between">
-        <h2>Expenses</h2>
-        <button class="tec-button tec-button-primary" (click)="onAddExpenseClick()">
-          Add Expense
-        </button>
+    <div class="expense-container" fxLayout="column" fxLayoutGap="30px">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 class="vertical-center">Expenses</h2>
+        <button class="tec-button tec-button-primary" (click)="onAddExpenseClick()">Add</button>
       </div>
-      <h3 *ngFor="let expense of trip?.expenses">{{ expense.name }} - {{ expense.value }}</h3>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Spender</th>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let expense of trip?.expenses">
+              <td>{{ getUsersName(expense.userId) }}</td>
+              <td>
+                {{ expense.name.length > 20 ? (expense.name | slice: 0:20) + '..' : expense.name }}
+              </td>
+              <td>{{ expense.value | currency }}</td>
+            </tr>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td></td>
+              <td>{{ getExpenseTotal() | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
@@ -39,7 +69,7 @@
   <form [formGroup]="expenseForm" (ngSubmit)="onSaveExpenseClick()">
     <div fxLayout="column" fxLayoutGap="40px">
       <select id="expense-member" class="tec-dropdown" formControlName="member">
-        <option value="0">Select spender</option>
+        <option value="">Select spender</option>
         <option *ngFor="let member of trip?.members" [value]="member.id">{{ member.name }}</option>
       </select>
       <input
@@ -67,7 +97,7 @@
         >
           Cancel
         </button>
-        <button class="tec-button tec-button-secondary" type="submit" fxFlex="50%">Save</button>
+        <button class="tec-button tec-button-primary" type="submit" fxFlex="50%">Save</button>
       </div>
     </div>
   </form>
@@ -94,7 +124,7 @@
         >
           Cancel
         </button>
-        <button class="tec-button tec-button-secondary" type="submit" fxFlex="50%">Save</button>
+        <button class="tec-button tec-button-primary" type="submit" fxFlex="50%">Save</button>
       </div>
     </div>
   </form>
