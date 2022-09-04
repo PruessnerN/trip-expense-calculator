@@ -42,13 +42,6 @@ export class TripService {
       {},
     );
 
-    // const memberExpensesObj: { [key: string]: number } = {
-    //   John: 400,
-    //   Jane: 1000,
-    //   Bob: 100,
-    //   Dave: 900,
-    // };
-
     const members = Object.keys(memberExpensesObj);
 
     const sortedMembers = members.sort(
