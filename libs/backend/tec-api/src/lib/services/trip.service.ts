@@ -58,7 +58,6 @@ export class TripService {
       sortedExpenses[i] += debt;
       sortedExpenses[j] -= debt;
 
-      console.log(`${sortedMembers[i]} owes ${sortedMembers[j]} $${debt}`);
       debts.push({
         member: trip.members.find((member) => member.id === sortedMembers[i]),
         amount: debt,
