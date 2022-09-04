@@ -1,14 +1,9 @@
-<div
-  *ngIf="trip$ | async as trip"
-  class="trip-container"
-  fxLayout="column"
-  fxLayoutAlign="center center"
->
-  <h1>{{ trip.name }}</h1>
+<div *ngIf="trip$ | async" class="trip-container" fxLayout="column" fxLayoutAlign="center center">
+  <h1>{{ trip?.name }}</h1>
   <h2>
-    <span class="subtext">from</span> {{ trip.startDate | date: 'longDate' }}
+    <span class="subtext">from</span> {{ trip?.startDate | date: 'longDate' }}
     <span class="subtext">to</span>
-    {{ trip.endDate | date: 'longDate' }}
+    {{ trip?.endDate | date: 'longDate' }}
   </h2>
   <div
     class="member-expense-container"
@@ -25,7 +20,7 @@
           Add Member
         </button>
       </div>
-      <h3 *ngFor="let member of trip.members">{{ member.name }}</h3>
+      <h3 *ngFor="let member of trip?.members">{{ member.name }}</h3>
     </div>
     <div class="expense-container" fxLayout="column" fxFlexFill>
       <div fxLayout="row" fxLayoutAlign="space-between">
@@ -34,7 +29,7 @@
           Add Expense
         </button>
       </div>
-      <h3 *ngFor="let expense of trip.expenses">{{ expense.name }} - {{ expense.value }}</h3>
+      <h3 *ngFor="let expense of trip?.expenses">{{ expense.name }} - {{ expense.value }}</h3>
     </div>
   </div>
 </div>

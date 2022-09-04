@@ -10,7 +10,9 @@ export class UserService {
   constructor(@InjectRepository(User) private repository: Repository<User>) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    return await this.repository.create(createUserDto);
+    return await this.repository.save({
+      ...createUserDto,
+    });
   }
 
   async findAll(): Promise<User[]> {

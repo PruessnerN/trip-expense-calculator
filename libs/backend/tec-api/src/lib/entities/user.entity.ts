@@ -17,6 +17,9 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column('uuid')
+  tripId: string;
+
   @Column()
   name: string;
 

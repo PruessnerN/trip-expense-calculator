@@ -10,7 +10,9 @@ export class ExpenseService {
   constructor(@InjectRepository(Expense) private repository: Repository<Expense>) {}
 
   async create(createExpenseDto: CreateExpenseDto): Promise<Expense> {
-    return await this.repository.create(createExpenseDto);
+    return await this.repository.save({
+      ...createExpenseDto,
+    });
   }
 
   async findAll(): Promise<Expense[]> {
