@@ -24,7 +24,8 @@
       "@trip-expense-calculator/frontend/feature-trip": ["libs/frontend/feature-trip/src/index.ts"],
       "@trip-expense-calculator/frontend/feature-wrapper": [
         "libs/frontend/feature-wrapper/src/index.ts"
-      ]
+      ],
+      "@trip-expense-calculator/frontend/util-shared": ["libs/frontend/util-shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
