@@ -41,7 +41,62 @@
 
 <tec-modal id="expense-modal">
   <h3>Add expense</h3>
-  <input id="expense-name" placeholder="Name" class="tec-input" type="text" />
-  <input id="expense-value" placeholder="Amount" class="tec-input" type="text" />
-  <button (click)="closeModal('expense-modal')">Close</button>
+  <form [formGroup]="expenseForm" (ngSubmit)="onSaveExpenseClick()">
+    <div fxLayout="column" fxLayoutGap="40px">
+      <input
+        id="expense-name"
+        placeholder="Name"
+        class="tec-input"
+        type="text"
+        formControlName="name"
+        autocomplete="off"
+      />
+      <input
+        id="expense-value"
+        placeholder="Amount"
+        class="tec-input"
+        type="text"
+        formControlName="value"
+        autocomplete="off"
+      />
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <button
+          class="tec-button tec-button-warn"
+          (click)="closeModal('expense-modal')"
+          type="button"
+          fxFlex="50%"
+        >
+          Cancel
+        </button>
+        <button class="tec-button tec-button-secondary" type="submit" fxFlex="50%">Save</button>
+      </div>
+    </div>
+  </form>
+</tec-modal>
+
+<tec-modal id="member-modal">
+  <h3>Add member</h3>
+  <form [formGroup]="memberForm" (ngSubmit)="onSaveMemberClick()">
+    <div fxLayout="column" fxLayoutGap="40px">
+      <input
+        id="member-name"
+        placeholder="Name"
+        class="tec-input"
+        type="text"
+        formControlName="name"
+        autocomplete="off"
+      />
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <button
+          class="tec-button tec-button-warn"
+          (click)="closeModal('member-modal')"
+          type="button"
+          fxFlex="50%"
+        >
+          Cancel
+        </button>
+        <button class="tec-button tec-button-secondary" type="submit" fxFlex="50%">Save</button>
+      </div>
+    </div>
+  </form>
 </tec-modal>
