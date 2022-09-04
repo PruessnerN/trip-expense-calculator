@@ -1,3 +1,6 @@
+import { ExpenseDto } from './expense.dto';
+import { UserDto } from './user.dto';
+
 export class TripDto {
   id: string;
 
@@ -10,6 +13,10 @@ export class TripDto {
   startDate: Date;
 
   endDate: Date;
+
+  members?: UserDto[];
+
+  expenses?: ExpenseDto[];
 
   updated: Date;
 

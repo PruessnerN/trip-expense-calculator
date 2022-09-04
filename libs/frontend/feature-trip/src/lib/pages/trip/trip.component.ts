@@ -15,4 +15,15 @@ export class TripComponent {
   constructor(route: ActivatedRoute, tripService: TripService) {
     this.trip$ = route.params.pipe(switchMap((params) => tripService.getTrip(params['slug'])));
   }
+
+  onAddMemberClick(): void {
+    const name = prompt("Please provide the member's name:");
+  }
+
+  onAddExpenseClick(): void {
+    const name = prompt('Please provide the expense name:');
+    const value = prompt('Please provide the expense value:');
+
+    console.log(name, value);
+  }
 }

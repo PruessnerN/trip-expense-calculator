@@ -3,6 +3,8 @@ export class ExpenseDto {
 
   userId: string;
 
+  tripId: string;
+
   name: string;
 
   value: number;

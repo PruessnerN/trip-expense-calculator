@@ -3,6 +3,8 @@ export class UpdateExpenseDto {
 
   userId: string;
 
+  tripId: string;
+
   name: string;
 
   value: number;

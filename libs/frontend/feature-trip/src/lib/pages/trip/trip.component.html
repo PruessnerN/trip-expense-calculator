@@ -1,3 +1,40 @@
-<div *ngIf="trip$ | async as trip" class="trip-container">
-  {{ trip }}
+<div
+  *ngIf="trip$ | async as trip"
+  class="trip-container"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+>
+  <h1>{{ trip.name }}</h1>
+  <h2>
+    <span class="subtext">from</span> {{ trip.startDate | date: 'longDate' }}
+    <span class="subtext">to</span>
+    {{ trip.endDate | date: 'longDate' }}
+  </h2>
+  <div
+    class="member-expense-container"
+    fxLayout="row"
+    fxLayout.lt-lg="column"
+    fxFlexFill
+    fxLayoutAlign="space-around"
+    fxLayoutGap="50px"
+  >
+    <div class="member-container" fxLayout="column" fxFlexFill>
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <h2>Members</h2>
+        <button class="tec-button tec-button-primary" (click)="onAddMemberClick()">
+          Add Member
+        </button>
+      </div>
+      <h3 *ngFor="let member of trip.members">{{ member.name }}</h3>
+    </div>
+    <div class="expense-container" fxLayout="column" fxFlexFill>
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <h2>Expenses</h2>
+        <button class="tec-button tec-button-primary" (click)="onAddExpenseClick()">
+          Add Expense
+        </button>
+      </div>
+      <h3 *ngFor="let expense of trip.expenses">{{ expense.name }} - {{ expense.value }}</h3>
+    </div>
+  </div>
 </div>

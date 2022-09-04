@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+import { Trip } from './trip.entity';
 import { User } from './user.entity';
 
 @Entity()
@@ -17,6 +18,9 @@ export class Expense {
 
   @Column('uuid')
   userId: string;
+
+  @Column('uuid')
+  tripId: string;
 
   @Column()
   name: string;
@@ -35,4 +39,7 @@ export class Expense {
 
   @ManyToOne(() => User, (t) => t.expenses)
   user: User;
+
+  @ManyToOne(() => Trip, (t) => t.expenses)
+  trip: Trip;
 }
