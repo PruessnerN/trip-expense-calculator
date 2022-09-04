@@ -29,7 +29,11 @@ export class CreateTripComponent {
   constructor(private tripService: TripService) {}
 
   onCreateTrip(): void {
-    if (this.createTripForm.valid) {
+    if (
+      this.createTripForm.valid &&
+      this.createTripForm.value.name?.trim() !== '' &&
+      this.createTripForm.value.description?.trim() !== ''
+    ) {
       const trip: CreateTripDto = {
         name: this.createTripForm.value.name ?? '',
         description: this.createTripForm.value.description ?? '',

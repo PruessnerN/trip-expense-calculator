@@ -21,15 +21,9 @@ export class ModalComponent implements OnInit, OnDestroy {
       console.error('modal must have an id');
       return;
     }
+
     this.element.style.display = 'none';
     document.body.appendChild(this.element);
-
-    this.element.addEventListener('click', (el: any) => {
-      if (el.target.className === 'tec-modal') {
-        this.close();
-      }
-    });
-
     this.modalService.add(this);
   }
 
