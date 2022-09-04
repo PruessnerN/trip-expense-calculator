@@ -2,12 +2,10 @@
   .trip-container {
     margin: 20px;
     margin-top: 100px;
-    .vertical-center {
-      margin-bottom: 0;
-    }
     .member-expense-container {
       .member-container,
-      .expense-container {
+      .expense-container,
+      .settle-up-container {
         width: 100%;
       }
     }

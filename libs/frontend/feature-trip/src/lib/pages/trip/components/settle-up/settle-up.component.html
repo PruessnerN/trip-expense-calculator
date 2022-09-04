@@ -1,0 +1,11 @@
+<div class="settle-up-container" fxLayout="column" fxLayoutGap="30px">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 class="vertical-center">Settle Up</h2>
+    <button class="tec-button tec-button-primary" (click)="onCalculateClick()">Calculate</button>
+  </div>
+  <div>
+    <h3 *ngFor="let debt of debts">
+      {{ debt.member.name }} owes {{ debt.payTo.name }} {{ debt.amount | currency }}
+    </h3>
+  </div>
+</div>

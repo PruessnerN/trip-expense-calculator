@@ -113,7 +113,7 @@ export class TripComponent {
     return this.trip && this.trip.expenses && this.trip.expenses.length
       ? this.trip?.expenses
           ?.map((expense) => expense.value)
-          ?.reduce((previous, next) => previous + next)
+          ?.reduce((previous, next) => previous + next, 0)
       : 0;
   }
 }
