@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TripDto } from '@trip-expense-calculator/api-interfaces';
 import { TripService } from '@trip-expense-calculator/frontend/data-access-trip';
-import { Observable, switchMap } from 'rxjs';
+import { ModalService } from '@trip-expense-calculator/frontend/util-shared';
+import { Observable, catchError, switchMap } from 'rxjs';
 
 @Component({
   selector: 'trip',
@@ -12,18 +13,30 @@ import { Observable, switchMap } from 'rxjs';
 export class TripComponent {
   trip$: Observable<TripDto>;
 
-  constructor(route: ActivatedRoute, tripService: TripService) {
-    this.trip$ = route.params.pipe(switchMap((params) => tripService.getTrip(params['slug'])));
+  constructor(
+    private modalService: ModalService,
+    route: ActivatedRoute,
+    tripService: TripService,
+    router: Router,
+  ) {
+    this.trip$ = route.params.pipe(
+      switchMap((params) => tripService.getTrip(params['slug'])),
+      catchError((error) => {
+        router.navigateByUrl('/404');
+        throw new Error(error.message);
+      }),
+    );
   }
 
   onAddMemberClick(): void {
-    const name = prompt("Please provide the member's name:");
+    this.modalService.open('member-modal');
   }
 
   onAddExpenseClick(): void {
-    const name = prompt('Please provide the expense name:');
-    const value = prompt('Please provide the expense value:');
+    this.modalService.open('expense-modal');
+  }
 
-    console.log(name, value);
+  closeModal(id: string) {
+    this.modalService.close(id);
   }
 }

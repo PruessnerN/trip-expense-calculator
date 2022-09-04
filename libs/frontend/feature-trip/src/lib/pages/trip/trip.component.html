@@ -38,3 +38,10 @@
     </div>
   </div>
 </div>
+
+<tec-modal id="expense-modal">
+  <h3>Add expense</h3>
+  <input id="expense-name" placeholder="Name" class="tec-input" type="text" />
+  <input id="expense-value" placeholder="Amount" class="tec-input" type="text" />
+  <button (click)="closeModal('expense-modal')">Close</button>
+</tec-modal>

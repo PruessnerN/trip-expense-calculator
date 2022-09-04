@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '@trip-expense-calculator/frontend/util-shared';
 
 import { TripComponent } from './pages/trip/trip.component';
 import { CreateTripComponent } from './pages/trips/components/create-trip/create-trip.component';
@@ -11,7 +12,7 @@ import { TripsComponent } from './pages/trips/trips.component';
 
 @NgModule({
   declarations: [TripsComponent, CreateTripComponent, TripSelectionComponent, TripComponent],
-  imports: [CommonModule, FlexLayoutModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, FlexLayoutModule, ReactiveFormsModule, RouterModule, SharedModule],
   exports: [TripsComponent],
 })
 export class TripModule {}

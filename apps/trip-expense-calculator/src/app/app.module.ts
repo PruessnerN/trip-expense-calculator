@@ -7,10 +7,9 @@ import { WrapperModule } from '@trip-expense-calculator/frontend/feature-wrapper
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent, ModalComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [BrowserModule, HttpClientModule, FlexLayoutModule, AppRoutingModule, WrapperModule],
   providers: [],
   bootstrap: [AppComponent],
