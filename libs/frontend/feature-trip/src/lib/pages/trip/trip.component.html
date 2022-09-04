@@ -38,6 +38,10 @@
   <h3>Add expense</h3>
   <form [formGroup]="expenseForm" (ngSubmit)="onSaveExpenseClick()">
     <div fxLayout="column" fxLayoutGap="40px">
+      <select id="expense-member" class="tec-dropdown" formControlName="member">
+        <option value="0">Select spender</option>
+        <option *ngFor="let member of trip?.members" [value]="member.id">{{ member.name }}</option>
+      </select>
       <input
         id="expense-name"
         placeholder="Name"

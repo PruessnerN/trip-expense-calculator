@@ -1,6 +1,11 @@
 @use '../colors' as colors;
 
-.tec-input {
+.tec-dropdown {
+  border: none;
+}
+
+.tec-input,
+.tec-dropdown {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -20,6 +25,11 @@
   }
 }
 
-.tec-input.ng-invalid.ng-touched {
+.tec-input.ng-invalid.ng-touched,
+.tec-dropdown.ng-invalid.ng-touched {
   border-bottom: 2px solid var(--error);
+}
+
+.tec-dropdown:focus-visible {
+  outline: none !important;
 }

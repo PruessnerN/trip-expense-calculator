@@ -18,7 +18,7 @@ export class TripComponent {
   trip?: TripDto;
 
   expenseForm = new FormGroup({
-    member: new FormControl('', [Validators.required]),
+    member: new FormControl('0', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     value: new FormControl('', [
       Validators.required,
@@ -73,7 +73,7 @@ export class TripComponent {
         })
         .subscribe((expense) => {
           this.closeModal('expense-modal');
-          this.expenseForm.reset();
+          this.expenseForm.reset({ member: '0' });
           this.trip?.expenses?.push(expense);
         });
     }
@@ -95,6 +95,8 @@ export class TripComponent {
   }
 
   closeModal(id: string) {
+    this.expenseForm.reset({ member: '0' });
+    this.memberForm.reset();
     this.modalService.close(id);
   }
 }
